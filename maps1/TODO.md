@@ -1,0 +1,4 @@
+- [x] Edit Kecamatan/styles/Desa_6_style.js: Update labelFont to "bold 13.0px 'Open Sans', sans-serif" and labelFill to "#000000"
+- [x] Edit Kecamatan/styles/purwanegara_5_style.js: Update labelFont to "bold 13.0px 'Open Sans', sans-serif" and labelFill to "#000000"
+- [x] Edit Kecamatan/styles/purwokertoutara_3_style.js: Update labelFont to "bold 13.0px 'Open Sans', sans-serif" and labelFill to "#000000"
+- [x] Test: Open Kecamatan/pwtutara.html in browser and check labels for desa, Purwanegara, and Purwokerto Utara are bold and black at appropriate zoom levels

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Statistik - Website Kecamatan Purwokerto Utara</title>
+  <meta name="description" content="Data statistik kependudukan Kecamatan Purwokerto Utara">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            primary: '#10b981',
+            'primary-dark': '#059669',
+            dark: '#0f172a',
+            'dark-light': '#1e293b',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="font-sans bg-slate-50 text-slate-800 overflow-x-hidden">
+
+  <!-- Header -->
+  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 scrolled">
+    <div class="container mx-auto px-4 lg:px-8">
+      <nav class="flex items-center justify-between h-20">
+        <a href="index.html" class="flex items-center gap-3 group">
+          <div
+            class="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center overflow-hidden border-2 border-white/20 group-hover:border-primary transition-all duration-300">
+            <img src="img/kab-banyumas.png" alt="Logo" class="w-10 h-10 object-contain">
+          </div>
+          <div class="text-white">
+            <h1 class="font-bold text-lg leading-tight">Kabupaten</h1>
+            <p class="font-semibold text-sm opacity-90">Banyumas</p>
+          </div>
+        </a>
+
+        <div class="hidden lg:flex items-center gap-1">
+          <a href="index.html" class="nav-link"><span class="nav-link-text">Beranda</span><span
+              class="nav-link-hover"></span></a>
+          <a href="maps1/Kecamatan/pwtutara.html" class="nav-link"><span class="nav-link-text">Peta
+              Kecamatan</span><span class="nav-link-hover"></span></a>
+          <!-- Dropdown Peta Desa -->
+          <div class="relative group">
+            <button class="nav-link flex items-center gap-1">
+              <span class="nav-link-text">Peta Desa</span>
+              <svg class="w-4 h-4 transition-transform duration-200 group-hover:rotate-180" fill="none"
+                stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+              <span class="nav-link-hover"></span>
+            </button>
+            <div
+              class="absolute top-full left-0 w-56 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
+              <div class="bg-white rounded-xl shadow-xl border border-slate-100 overflow-hidden">
+                <a href="maps1/Desa/Desa Sumampir/Sumampir.html"
+                  class="block px-4 py-3 text-sm text-slate-600 hover:bg-primary/5 hover:text-primary transition-colors border-b border-slate-50">Desa
+                  Sumampir</a>
+                <a href="maps1/Desa/Desa Pabuaran/Pabuaran.html"
+                  class="block px-4 py-3 text-sm text-slate-600 hover:bg-primary/5 hover:text-primary transition-colors border-b border-slate-50">Desa
+                  Pabuaran</a>
+                <a href="maps1/Desa/Desa Grendeng/Grendeng.html"
+                  class="block px-4 py-3 text-sm text-slate-600 hover:bg-primary/5 hover:text-primary transition-colors border-b border-slate-50">Desa
+                  Grendeng</a>
+                <a href="maps1/Desa/Desa BancarKembar/BancarKembar.html"
+                  class="block px-4 py-3 text-sm text-slate-600 hover:bg-primary/5 hover:text-primary transition-colors">Desa
+                  BancarKembar</a>
+              </div>
+            </div>
+          </div>
+          <a href="statistik.html" class="nav-link active"><span class="nav-link-text">Data Penduduk</span><span
+              class="nav-link-hover"></span></a>
+          <a href="tentang.html" class="nav-link"><span class="nav-link-text">Tentang Saya</span><span
+              class="nav-link-hover"></span></a>
+        </div>
+
+        <button id="menuBtn"
+          class="lg:hidden relative w-12 h-12 flex items-center justify-center rounded-xl bg-white/10 backdrop-blur-sm border border-white/20">
+          <div class="hamburger"><span></span><span></span><span></span></div>
+        </button>
+      </nav>
+    </div>
+
+    <div id="mobileMenu" class="mobile-menu lg:hidden">
+      <div class="container mx-auto px-4 py-6 space-y-2">
+        <a href="index.html" class="mobile-link"><svg class="w-5 h-5" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>Beranda</a>
+        <a href="maps1/Kecamatan/pwtutara.html" class="mobile-link"><svg class="w-5 h-5" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+          </svg>Peta Kecamatan</a>
+        <div class="relative">
+          <button onclick="document.getElementById('mobile-submenu-desa').classList.toggle('hidden')"
+            class="w-full mobile-link flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+              </svg>
+              Peta Desa
+            </div>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div id="mobile-submenu-desa" class="hidden pl-12 pr-4 space-y-2 pb-2">
+            <a href="maps1/Desa/Desa Sumampir/Sumampir.html" class="block py-2 text-sm text-slate-400 hover:text-primary">Desa
+              Sumampir</a>
+            <a href="maps1/Desa/Desa Pabuaran/Pabuaran.html" class="block py-2 text-sm text-slate-400 hover:text-primary">Desa
+              Pabuaran</a>
+            <a href="maps1/Desa/Desa Grendeng/Grendeng.html" class="block py-2 text-sm text-slate-400 hover:text-primary">Desa
+              Grendeng</a>
+            <a href="maps1/Desa/Desa BancarKembar/BancarKembar.html" class="block py-2 text-sm text-slate-400 hover:text-primary">Desa
+              BancarKembar</a>
+          </div>
+        </div>
+        <a href="statistik.html" class="mobile-link active"><svg class="w-5 h-5" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>Data Penduduk</a>
+        <a href="tentang.html" class="mobile-link"><svg class="w-5 h-5" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>Tentang Saya</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Page Header -->
+  <section class="pt-28 pb-12 bg-gradient-to-br from-dark via-dark-light to-dark relative overflow-hidden">
+    <div class="absolute inset-0 opacity-20">
+      <div class="absolute top-20 left-20 w-72 h-72 bg-blue-500 rounded-full blur-3xl"></div>
+      <div class="absolute bottom-10 right-20 w-96 h-96 bg-indigo-500 rounded-full blur-3xl"></div>
+    </div>
+
+    <div class="container mx-auto px-4 lg:px-8 relative z-10">
+      <div class="max-w-3xl">
+        <span
+          class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/20 border border-blue-500/30 text-blue-400 text-sm font-semibold mb-4">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
+          DATA STATISTIK
+        </span>
+        <h1 class="text-3xl md:text-4xl font-extrabold text-white mb-3">
+          Statistik <span class="text-blue-400">Kependudukan</span>
+        </h1>
+        <p class="text-slate-300 leading-relaxed">
+          Data demografi dan statistik penduduk Kecamatan Purwokerto Utara per 31 Desember 2024
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Overview -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-4 lg:px-8">
+      <!-- Overview Cards -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div class="stats-card reveal-on-scroll group" style="animation-delay: 0.1s">
+          <div class="stats-icon bg-gradient-to-br from-primary to-teal-400">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <div class="stats-value" data-target="48497">0</div>
+          <div class="stats-label">Total Penduduk</div>
+          <div class="stats-change positive">Per 31 Desember 2024</div>
+        </div>
+
+        <div class="stats-card reveal-on-scroll group" style="animation-delay: 0.2s">
+          <div class="stats-icon bg-gradient-to-br from-blue-500 to-indigo-500">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+          </div>
+          <div class="stats-value" data-target="24171">0</div>
+          <div class="stats-label">Laki-laki</div>
+          <div class="stats-change">49,84% dari total</div>
+        </div>
+
+        <div class="stats-card reveal-on-scroll group" style="animation-delay: 0.3s">
+          <div class="stats-icon bg-gradient-to-br from-pink-500 to-rose-500">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+          </div>
+          <div class="stats-value" data-target="24326">0</div>
+          <div class="stats-label">Perempuan</div>
+          <div class="stats-change">50,16% dari total</div>
+        </div>
+
+        <div class="stats-card reveal-on-scroll group" style="animation-delay: 0.4s">
+          <div class="stats-icon bg-gradient-to-br from-amber-500 to-orange-500">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+          </div>
+          <div class="stats-value" data-target="7">0</div>
+          <div class="stats-label">Kelurahan</div>
+          <div class="stats-change positive">Dari 7 Desa</div>
+        </div>
+      </div>
+
+      <!-- Chart Section -->
+      <div class="mb-16 reveal-on-scroll">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-1.5 h-10 bg-gradient-to-b from-blue-500 to-indigo-500 rounded-full"></div>
+          <div>
+            <h2 class="text-2xl font-bold text-slate-800">Jumlah Penduduk Kecamatan Purwokerto Utara</h2>
+            <p class="text-slate-500">Per 31 Desember 2024</p>
+          </div>
+        </div>
+
+        <div class="chart-container">
+          <canvas id="populationChart" height="400"></canvas>
+        </div>
+      </div>
+
+      <!-- Population Bars -->
+      <div class="reveal-on-scroll">
+        <div class="flex items-center gap-3 mb-8">
+          <div class="w-1.5 h-10 bg-gradient-to-b from-primary to-teal-400 rounded-full"></div>
+          <div>
+            <h2 class="text-2xl font-bold text-slate-800">Detail Per Desa</h2>
+            <p class="text-slate-500">Perbandingan jumlah penduduk antar desa</p>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg p-6 lg:p-8">
+          <div class="space-y-6">
+            <div class="population-bar" style="animation-delay: 0.1s">
+              <div class="flex justify-between mb-2">
+                <span class="font-semibold text-slate-700">🏘️ Desa Sumampir</span>
+                <span class="text-primary font-bold">10.385 jiwa</span>
+              </div>
+              <div class="h-5 bg-slate-100 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-primary to-teal-400 rounded-full transition-all duration-1000 chart-bar-fill"
+                  data-width="100" style="width: 0%"></div>
+              </div>
+            </div>
+
+            <div class="population-bar" style="animation-delay: 0.15s">
+              <div class="flex justify-between mb-2">
+                <span class="font-semibold text-slate-700">🏘️ Desa Bancarkembar</span>
+                <span class="text-primary font-bold">9.289 jiwa</span>
+              </div>
+              <div class="h-5 bg-slate-100 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full transition-all duration-1000 chart-bar-fill"
+                  data-width="89" style="width: 0%"></div>
+              </div>
+            </div>
+
+            <div class="population-bar" style="animation-delay: 0.2s">
+              <div class="flex justify-between mb-2">
+                <span class="font-semibold text-slate-700">🏘️ Desa Purwanegara</span>
+                <span class="text-primary font-bold">7.881 jiwa</span>
+              </div>
+              <div class="h-5 bg-slate-100 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-amber-500 to-orange-500 rounded-full transition-all duration-1000 chart-bar-fill"
+                  data-width="76" style="width: 0%"></div>
+              </div>
+            </div>
+
+            <div class="population-bar" style="animation-delay: 0.25s">
+              <div class="flex justify-between mb-2">
+                <span class="font-semibold text-slate-700">🏘️ Desa Grendeng</span>
+                <span class="text-primary font-bold">6.925 jiwa</span>
+              </div>
+              <div class="h-5 bg-slate-100 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-rose-500 to-pink-500 rounded-full transition-all duration-1000 chart-bar-fill"
+                  data-width="67" style="width: 0%"></div>
+              </div>
+            </div>
+
+            <div class="population-bar" style="animation-delay: 0.3s">
+              <div class="flex justify-between mb-2">
+                <span class="font-semibold text-slate-700">🏘️ Desa Bobosan</span>
+                <span class="text-primary font-bold">6.308 jiwa</span>
+              </div>
+              <div class="h-5 bg-slate-100 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-purple-500 to-violet-500 rounded-full transition-all duration-1000 chart-bar-fill"
+                  data-width="61" style="width: 0%"></div>
+              </div>
+            </div>
+
+            <div class="population-bar" style="animation-delay: 0.35s">
+              <div class="flex justify-between mb-2">
+                <span class="font-semibold text-slate-700">🏘️ Desa Pabuaran</span>
+                <span class="text-primary font-bold">4.755 jiwa</span>
+              </div>
+              <div class="h-5 bg-slate-100 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-cyan-500 to-teal-500 rounded-full transition-all duration-1000 chart-bar-fill"
+                  data-width="46" style="width: 0%"></div>
+              </div>
+            </div>
+
+            <div class="population-bar" style="animation-delay: 0.4s">
+              <div class="flex justify-between mb-2">
+                <span class="font-semibold text-slate-700">🏘️ Desa Karangwangkal</span>
+                <span class="text-primary font-bold">2.954 jiwa</span>
+              </div>
+              <div class="h-5 bg-slate-100 rounded-full overflow-hidden">
+                <div
+                  class="h-full bg-gradient-to-r from-slate-500 to-slate-600 rounded-full transition-all duration-1000 chart-bar-fill"
+                  data-width="28" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Total -->
+          <div class="mt-8 pt-6 border-t border-slate-200">
+            <div class="flex justify-between items-center">
+              <span class="text-lg font-bold text-slate-800">Total Penduduk</span>
+              <span class="text-2xl font-extrabold text-primary">48.497 jiwa</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark py-8 mt-8">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-slate-500 text-sm">&copy; 2025 Pemerintah Kecamatan Purwokerto Utara</p>
+    </div>
+  </footer>
+
+  <!-- Back to Top -->
+  <button id="backToTop" class="back-to-top">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    </svg>
+  </button>
+
+  <script src="script.js"></script>
+  <script>
+    // Population Chart
+    const ctx = document.getElementById('populationChart').getContext('2d');
+
+    const populationData = {
+      labels: ['Grendeng', 'Bobosan', 'Karangwangkal', 'Pabuaran', 'Sumampir', 'Bancarkembar', 'Purwanegara'],
+      datasets: [{
+        label: 'Jumlah Penduduk',
+        data: [6925, 6308, 2954, 4755, 10385, 9289, 7881],
+        backgroundColor: [
+          'rgba(244, 63, 94, 0.8)',
+          'rgba(168, 85, 247, 0.8)',
+          'rgba(100, 116, 139, 0.8)',
+          'rgba(6, 182, 212, 0.8)',
+          'rgba(16, 185, 129, 0.8)',
+          'rgba(59, 130, 246, 0.8)',
+          'rgba(245, 158, 11, 0.8)',
+        ],
+        borderColor: [
+          'rgba(244, 63, 94, 1)',
+          'rgba(168, 85, 247, 1)',
+          'rgba(100, 116, 139, 1)',
+          'rgba(6, 182, 212, 1)',
+          'rgba(16, 185, 129, 1)',
+          'rgba(59, 130, 246, 1)',
+          'rgba(245, 158, 11, 1)',
+        ],
+        borderWidth: 2,
+        borderRadius: 8,
+        borderSkipped: false,
+      }]
+    };
+
+    const populationChart = new Chart(ctx, {
+      type: 'bar',
+      data: populationData,
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false
+          },
+          title: {
+            display: true,
+            text: 'Jumlah Penduduk Kecamatan Purwokerto Utara - 31 Desember 2024',
+            font: {
+              size: 16,
+              weight: 'bold',
+              family: "'Plus Jakarta Sans', sans-serif"
+            },
+            padding: {
+              bottom: 30
+            },
+            color: '#1e293b'
+          },
+          tooltip: {
+            backgroundColor: 'rgba(15, 23, 42, 0.9)',
+            titleFont: {
+              size: 14,
+              weight: 'bold'
+            },
+            bodyFont: {
+              size: 13
+            },
+            padding: 12,
+            cornerRadius: 8,
+            displayColors: false,
+            callbacks: {
+              label: function (context) {
+                return context.parsed.y.toLocaleString('id-ID') + ' jiwa';
+              }
+            }
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: {
+              color: 'rgba(226, 232, 240, 0.8)',
+              drawBorder: false
+            },
+            ticks: {
+              font: {
+                family: "'Plus Jakarta Sans', sans-serif"
+              },
+              callback: function (value) {
+                return value.toLocaleString('id-ID');
+              }
+            }
+          },
+          x: {
+            grid: {
+              display: false
+            },
+            ticks: {
+              font: {
+                family: "'Plus Jakarta Sans', sans-serif",
+                size: 11
+              }
+            }
+          }
+        },
+        animation: {
+          duration: 2000,
+          easing: 'easeOutQuart'
+        }
+      }
+    });
+
+    // Animate bars on scroll
+    const animateBars = () => {
+      const bars = document.querySelectorAll('.chart-bar-fill');
+      bars.forEach((bar, index) => {
+        const width = bar.getAttribute('data-width');
+        setTimeout(() => {
+          bar.style.width = width + '%';
+        }, index * 150);
+      });
+    };
+
+    // Intersection Observer for bars
+    const barSection = document.querySelector('.chart-container');
+    if (barSection) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setTimeout(animateBars, 500);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      observer.observe(barSection);
+    }
+  </script>
+</body>
+
+</html>

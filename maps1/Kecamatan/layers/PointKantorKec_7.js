@@ -1,0 +1,1 @@
+var json_PointKantorKec_7 = {"type":"FeatureCollection","name":"PointKantorKec_7","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"1","Nama":"Kantor Kecamatan Purwokerto Utara\n"},"geometry":{"type":"Point","coordinates":[109.244407771459805,-7.416206250927126]}}]}

@@ -1,0 +1,1 @@
+var json_BalaiDesa_7 = {"type":"FeatureCollection","name":"BalaiDesa_7","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"1","Nama":"Kantor Kelurahan Grendeng\n"},"geometry":{"type":"Point","coordinates":[109.249199636784439,-7.40245675805053]}}]}

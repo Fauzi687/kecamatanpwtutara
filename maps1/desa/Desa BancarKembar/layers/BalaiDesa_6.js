@@ -1,0 +1,1 @@
+var json_BalaiDesa_6 = {"type":"FeatureCollection","name":"BalaiDesa_6","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"1","Nama":"Kantor Kelurahan Bancarkembar"},"geometry":{"type":"Point","coordinates":[109.24563975439267,-7.410743064530693]}}]}

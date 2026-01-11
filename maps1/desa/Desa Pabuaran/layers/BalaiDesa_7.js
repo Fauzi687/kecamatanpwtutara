@@ -1,0 +1,1 @@
+var json_BalaiDesa_7 = {"type":"FeatureCollection","name":"BalaiDesa_7","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"1","Nama":"Kantor Kelurahan Pabuwaran\n"},"geometry":{"type":"Point","coordinates":[109.244555574903572,-7.393617019707024]}}]}
